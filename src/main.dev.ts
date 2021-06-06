@@ -50,7 +50,9 @@ const installExtensions = async () => {
     )
     .catch(console.log);
 };
+const Store = require('electron-store');
 
+Store.initRenderer();
 const createWindow = async () => {
   if (
     process.env.NODE_ENV === 'development' ||
@@ -86,10 +88,10 @@ const createWindow = async () => {
       throw new Error('"mainWindow" is not defined');
     }
     if (process.env.START_MINIMIZED) {
-      mainWindow.minimize();
+      mainWindow.maximize();
     } else {
       mainWindow.show();
-      mainWindow.focus();
+      mainWindow.maximize();
     }
   });
 
